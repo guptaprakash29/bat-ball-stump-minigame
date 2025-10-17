@@ -63,10 +63,31 @@ function getResult(userMove, computerMove) {
   }
 }
 
+// --- Old version using alert (kept for reference) ---
+// function showResult(userMove, computerMove, result) {
+//   localStorage.setItem("Score", JSON.stringify(score));
+//   alert(
+//     `You have choosen ${userMove} . Computer choise is ${computerMove}. ${result}
+//     ${score.displayScore()}`
+//   );
+// }
+
 function showResult(userMove, computerMove, result) {
+  // Store score in local storage
   localStorage.setItem("Score", JSON.stringify(score));
-  alert(
-    `You have choosen ${userMove} . Computer choise is ${computerMove}. ${result}  
-    ${score.displayScore()}`
-  );
+  // Display user's move (if available)
+  document.querySelector("#user-move").innerText = userMove
+    ? `You have chosen ${userMove}`
+    : "";
+
+  // Display computer's move (if available)
+  document.querySelector("#computer-move").innerText = computerMove
+    ? `Computer choice is ${computerMove}`
+    : "";
+
+  // Display result (Win / Lose / Tie)
+  document.querySelector("#result").innerText = result || "";
+
+  // Display the score
+  document.querySelector("#score").innerText = score.displayScore();
 }

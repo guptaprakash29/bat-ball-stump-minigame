@@ -6,30 +6,35 @@
   </head>
   <body>
     <h1>Bat Ball Stump Game</h1>
+
     <button
       onclick="  let computerChoice= generateComputerChoice();let resultMsg =getResult('BAT',computerChoice); showResult('BAT',computerChoice, resultMsg);"
     >
-      Bat
+      <img src="img/bat.png" alt="Bat" />
     </button>
 
     <button
       onclick=" computerChoice=generateComputerChoice();resultMsg =getResult('BALL', computerChoice);showResult('BALL',computerChoice, resultMsg);"
     >
-      Ball
+      <img src="img/ball.png" alt="Ball" />
     </button>
 
     <button
       onclick=" computerChoice=generateComputerChoice();resultMsg =getResult('STUMP',computerChoice);showResult('STUMP',computerChoice, resultMsg);"
     >
-      Stump
+      <img src="img/wicket.png" alt="Wicket" />
     </button>
     <button
       onclick="localStorage.clear(); 
-      resetScore();"
+      resetScore(); showResult();"
       style="margin-left: 20px; background-color: #ff4444"
     >
       Reset Score
     </button>
+    <h1 id="user-move"></h1>
+    <h1 id="computer-move"></h1>
+    <h1 id="result"></h1>
+    <h1 id="score"></h1>
     <script src="bat-ball-stump.js"></script>
   </body>
 </html>
