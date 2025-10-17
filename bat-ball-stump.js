@@ -1,11 +1,20 @@
-let score = {
-  win: 0,
-  lost: 0,
-  tie: 0,
-  displayScore: function () {
+let score;
+let scoreStr = localStorage.getItem("Score");
+resetScore(scoreStr);
+function resetScore(scoreStr) {
+  score = scoreStr
+    ? JSON.parse(scoreStr)
+    : {
+        win: 0,
+        lost: 0,
+        tie: 0,
+      };
+
+  score.displayScore = function () {
     return ` Won:${score.win}, Lost:${score.lost}, Tie: ${score.tie}`;
-  },
-};
+  };
+}
+
 function generateComputerChoice() {
   let randomNumber = Math.random() * 3;
   if (randomNumber > 0 && randomNumber <= 1) {
@@ -55,7 +64,7 @@ function getResult(userMove, computerMove) {
 }
 
 function showResult(userMove, computerMove, result) {
-  // console.log(score);
+  localStorage.setItem("Score", JSON.stringify(score));
   alert(
     `You have choosen ${userMove} . Computer choise is ${computerMove}. ${result}  
     ${score.displayScore()}`
